@@ -1,0 +1,104 @@
+.transition(@transition) {
+	-webkit-transition: @transition;
+	-moz-transition: @transition;
+	-ms-transition: @transition;
+	-o-transition: @transition;
+	transition: @transition;
+}
+
+.animation(@animation) {
+	-webkit-animation: @animation;
+	-moz-animation: @animation;
+	-ms-animation: @animation;
+	-o-animation: @animation;
+	animation: @animation;
+}
+
+.transform(@transform) {
+	-webkit-transform: @transform;
+	-moz-transform: @transform;
+	-ms-transform: @transform;
+	-o-transform: @transform;
+	transform: @transform;
+}
+
+.gradient(@color1, @color2, @start: 0%, @end: 100%) {
+	background-image: -moz-linear-gradient(left, @color1 @start, @color2 @end); /* FF3.6+ */
+	background-image: -webkit-gradient(linear, left top, right top, color-stop(@start,@color1), color-stop(@end,@color2)); /* Chrome,Safari4+ */
+	background-image: -webkit-linear-gradient(left, @color1 @start,@color2 @end); /* Chrome10+,Safari5.1+ */
+	background-image: -o-linear-gradient(left, @color1 @start,@color2 @end); /* Opera 11.10+ */
+	background-image: -ms-linear-gradient(left, @color1 @start,@color2 @end); /* IE10+ */
+	background-image: linear-gradient(to right, @color1 @start,@color2 @end); /* W3C */
+}
+
+@gradientDelta: 50%;
+
+.progress-fill() {
+	0% {
+		.transform(translate3d(-@gradientDelta,0,0));
+	}
+	
+	100% {
+		.transform(translate3d(0,0,0));
+	}
+}
+
+@keyframes progress-fill { .progress-fill; }
+@-webkit-keyframes progress-fill { .progress-fill; }
+
+@animation: 3*350ms;
+
+.progress.component {
+	@h: 5px;
+	height: @h;
+	position: relative;
+
+	border-bottom: 1px solid fade(#fff, 60%);
+	overflow: hidden;
+
+	.bar {
+		position: absolute;
+		left: 0;
+		top: 0;
+		width: 100%;
+		height: 100%;
+		overflow: hidden;
+		.transition(all @animation ease-out);
+		.transform(translate3d(-100%,0,0));
+		
+		.fill {
+			position: absolute;
+			left: 0;
+			top: 0;
+			width: 100 * 100/@gradientDelta;
+			height: 100%;
+
+			background-size: @gradientDelta 100%;
+			background-repeat: repeat;
+			background-position: 100% 0;
+
+			.gradient(fade(#fff, 50%), #fff);
+			.animation(progress-fill 2s ease-out 0 infinite);
+		}
+	}
+
+	&.no-animation {
+		.bar .fill {
+			.animation(none);
+		}
+	}
+
+	&.no-transition {
+		.bar {
+			.transition(none);
+		}
+	}
+
+	&.debug {
+		&, .bar, .fill {
+			overflow: visible;
+			outline: 1px dashed #f00;
+		}
+	}
+}
+
