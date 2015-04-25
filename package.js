@@ -2,7 +2,7 @@ Package.describe({
 	name: 'zhenya:progress',
 	version: '0.0.1',
 	// Brief, one-line summary of the package.
-	summary: 'Sexy progress bar',
+	summary: 'Smooth, responsive, animated progress bar',
 	// URL to the Git repository containing the source code for this package.
 	git: 'https://github.com/zhenyasav/progress',
 	// By default, Meteor will default to using README.md for documentation.
