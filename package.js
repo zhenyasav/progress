@@ -17,7 +17,7 @@ Package.onUse(function(api) {
 		'coffeescript', 
 		'less', 
 		'templating',
-		'reactive-var']);
+		'reactive-var'], 'client');
 
 	api.addFiles([
 		'progress.html',
