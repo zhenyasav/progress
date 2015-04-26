@@ -1,6 +1,9 @@
 # Progress
 
 Meteor component for showing an animated progress bar. [Demo](http://progress.zhenya.co).
+```
+meteor add zhenya:progress
+```
 
 ## Usage
 
@@ -16,6 +19,24 @@ Change progress bar colors by supplying a color class string:
 ```
 {{>progress progress=some_prop color="green"}}
 ```
+Available colors:
 
-
+- `orange`
+- `darkblue`
+- `blue`
+- `cyan`
+- `red`
+- `green`
+- `yellow`
+- `pink`
+- `magenta`
+- `violet`
+- `purple`
+- `white`
+- `light`
+- `lightgray`
+- `gray`
+- `darkgray`
+- `dark`
+- `black`
 
