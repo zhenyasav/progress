@@ -1,3 +1,27 @@
+.colors() {
+	@orange: #FF9933;
+	@darkblue: #0072B2;
+	@blue: #00A3FF;
+	@cyan: #47e9e9;
+	@red: #FF1924;
+	@green: darken(spin(#A8E30B, 10), 10%);
+	@yellow: #FFEF36;
+	@pink: #ff6699;
+	@magenta: #FF00FF;
+	@violet: #9400D3;
+	@purple: #5C00EA;
+}
+
+.shades(@w: #fff, @b: #000) {
+	@white: @w;
+	@light: mix(@w, @b, 96%);
+	@lightgray: mix(@w, @b, 85%);
+	@gray: mix(@w, @b, 60%);
+	@darkgray: mix(@w, @b, 30%);
+	@dark: mix(@w, @b, 10%);
+	@black: @b;
+}
+
 .transition(@transition) {
 	-webkit-transition: @transition;
 	-moz-transition: @transition;
@@ -43,8 +67,8 @@
 	}
 }
 
-@keyframes progress-fill { .progress-fill; }
 @-webkit-keyframes progress-fill { .progress-fill; }
+@keyframes progress-fill { .progress-fill; }
 
 @animation: 3*350ms;
 
@@ -78,9 +102,42 @@
 			background-position: 100% 0;
 
 			.gradient(fade(#fff, 50%), #fff);
-			.animation(progress-fill 2s ease-out 0 infinite);
+			
+			.animation(progress-fill 2s infinite);
 		}
 	}
+
+	.colors();
+	.shades();
+
+	.color(@name) {
+		&.@{name} {
+			border-bottom-color: fade(@@name, 60%);
+			.bar .fill {
+				.gradient(fade(@@name, 50%), @@name);
+			}
+		}
+	}
+
+	.color(~'orange');
+	.color(~'blue');
+	.color(~'darkblue');
+	.color(~'cyan');
+	.color(~'red');
+	.color(~'green');
+	.color(~'yellow');
+	.color(~'pink');
+	.color(~'magenta');
+	.color(~'violet');
+	.color(~'purple');
+
+	.color(~'white');
+	.color(~'light');
+	.color(~'lightgray');
+	.color(~'gray');
+	.color(~'darkgray');
+	.color(~'dark');
+	.color(~'black');
 
 	&.no-animation {
 		.bar .fill {
