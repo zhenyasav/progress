@@ -17,7 +17,7 @@ To make the progress bar react to data context changes with a delay, specify a d
 
 Change progress bar colors by supplying a color class string:
 ```
-{{>progress progress=some_prop color="green"}}
+{{>progress progress=some_prop class="green"}}
 ```
 Available colors:
 

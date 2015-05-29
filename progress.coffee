@@ -3,10 +3,6 @@ wait = 1000
 
 delay = (d, f) -> Meteor.setTimeout f, d
 
-Template.progress.helpers
-
-	classes: -> @color ? ''
-
 
 Template.progress.rendered = ->
 	bar = @$ '.bar'
